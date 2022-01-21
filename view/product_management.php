@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/CSS/product.css">
     <title>Document</title>
 </head>
 <body>
     <?php 
-        include("header.php");
+    include("header.php");
     ?>
-        
-        <h1>Cart!</h1>
+    <h1>Product Management!</h1>
 </body>
 </html>

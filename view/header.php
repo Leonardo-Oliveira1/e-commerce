@@ -12,7 +12,7 @@
 
             <ul>
                 <a href="register_product.php"><li>Launch products</li></a>
-                <a href="account.php"><li>Your Account</li></a>
+                <a href="product_management.php"><li>Your Account</li></a>
                 <a href="cart.php"><li>Cart (0)</li></a>
             </ul>
         </nav>

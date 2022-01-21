@@ -1,6 +1,6 @@
 <?php 
 
-    require_once "..\model\connection.php";
+    require_once "connection.php";
     class userQueries extends Connection{
         public function registerUser($name, $email, $password, $address, $zipcode, $isSeller){
     

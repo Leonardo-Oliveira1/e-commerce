@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../public/CSS/forms/form_launch_product.css">
 </head>
 <body>
+    <?php 
+    include("header.php");
+    ?>
 <div class="container">
     <div class="message">
         <h1>Launch a product</h1>
