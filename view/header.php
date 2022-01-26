@@ -1,5 +1,5 @@
 <head>
-<link rel="stylesheet" href="../public/CSS/header.css">
+<link rel="stylesheet" href="CSS/header.css">
 
 </head>
     <header>
@@ -11,8 +11,8 @@
             <input type="text" id="txtBusca" placeholder="Search products..."/>
 
             <ul>
-                <a href="register_product.php"><li>Launch products</li></a>
-                <a href="product_management.php"><li>Your Account</li></a>
+                <a href="register_product.php"><li>Manage Products</li></a>
+                <a href="register_user.php"><li>Your account</li></a>
                 <a href="cart.php"><li>Cart (0)</li></a>
             </ul>
         </nav>

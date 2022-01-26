@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <link rel="stylesheet" href="../public/CSS/forms/form_register_user.css">
+    <link rel="stylesheet" href="CSS/forms/form_register_user.css">
 </head>
 <body>
-
 <div class="container">
     <div class="message">
         <h1>Create Account</h1>
@@ -30,7 +29,7 @@
         <label>Zipcode</label><br>
         <input type="text" id="user_zipcode" required name="user_zipcode"><br><br>
     <?php 
-        require_once "..\controller\user_queries.php";
+        require_once "..\model\user_queries.php";
         $user_query = new userQueries;
         if(isset($_POST['send'])){
             $name = addslashes($_POST['user_name']);
@@ -54,7 +53,7 @@
         
         <div class="login">
             <label>Already registered?</label>
-            <a href="/"><button>Login in your account</button></a>
+            <a href="login_user.php"><button>Login in your account</button></a>
         </div>    
     </div>
 

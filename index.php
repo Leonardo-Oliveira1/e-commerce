@@ -19,16 +19,15 @@
             <input type="text" id="txtBusca" placeholder="Search products..."/>
 
             <ul>
-                <a href="view/register_product.php"><li>Launch products</li></a>
-                <a href="view/product_management.php"><li>Your Account</li></a>
+                <a href="view/register_product.php"><li>Manage Products</li></a>
+                <a href="view/register_user.php"><li>Your account</li></a>
                 <a href="view/cart.php"><li>Cart (0)</li></a>
             </ul>
         </nav>
 </header>
-    <h1>HOME</h1>
     <div class="allproducts">
     <?php 
-        require "controller/product_queries.php";
+        require "model/product_queries.php";
         $product_query = new productQueries;
         $product_query->showProducts();
     ?>   
