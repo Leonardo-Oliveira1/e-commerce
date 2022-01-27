@@ -3,9 +3,13 @@
     require_once "connection.php";
     
     class productQueries extends Connection{
-        public function registerProduct($name, $image, $description, $details, $author, $seller, $price, $category){
+        public function registerProduct($name, $image, $description, $details,
+        $author, $seller, $price, $category){
                 
-                $cmd = $this->pdo->prepare("INSERT INTO `products` (`product_id`, `product_name`, `product_image`, `product_description`, `product_details`, `product_author`, `product_seller`, `product_rating`, `product_price`, `product_category`)  
+                $cmd = $this->pdo->prepare("INSERT INTO `products` (`product_id`,
+                `product_name`, `product_image`, `product_description`,
+                `product_details`, `product_author`, `product_seller`,
+                `product_rating`, `product_price`, `product_category`)  
                 VALUES (NULL, :n, :i, :dc, :de, :a, :s, 0, :p, :c)");
 
                 $cmd->bindValue(":n", $name);
@@ -27,7 +31,10 @@
             while($count = $selectall->fetch(PDO::FETCH_ASSOC)){
                 $countposition = $count['product_id'];
 
-                $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`, `product_author`, `product_rating`, `product_price`, `product_seller` FROM `products` WHERE `product_id` = :id");
+                $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
+                `product_author`, `product_rating`, `product_price`, `product_seller`
+                FROM `products` WHERE `product_id` = :id");
+                
                 $cmd->bindValue(":id", $countposition);
                 $cmd->execute();
                 $result = $cmd->fetch(PDO::FETCH_ASSOC);

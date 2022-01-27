@@ -14,20 +14,20 @@
     </div>
 
     <form method="POST">
-        <label>Name</label><br>
-        <input type="text" id="user_name" required name="user_name"><br><br>
+        <label>First name</label><br>
+        <input type="text" id="user_name" required name="user_name" maxlength="18"><br><br>
                
         <label>Email</label><br>
-        <input type="email" id="user_email" required name="user_email"><br><br>
+        <input type="email" id="user_email" required name="user_email" maxlength="32"><br><br>
                 
         <label>Password</label><br>
-        <input type="password" id="user_password" required name="user_password"><br><br>
+        <input type="password" id="user_password" required name="user_password" maxlength="32"><br><br>
                 
         <label>Address</label><br>
-        <input type="text" id="user_address" required name="user_address"><br><br>
+        <input type="text" id="user_address" required name="user_address" maxlength="64"><br><br>
                 
         <label>Zipcode</label><br>
-        <input type="text" id="user_zipcode" required name="user_zipcode"><br><br>
+        <input type="text" id="user_zipcode" required name="user_zipcode" maxlength="11"><br><br>
     <?php 
         require_once "..\model\user_queries.php";
         $user_query = new userQueries;
@@ -38,8 +38,10 @@
             $address = addslashes($_POST['user_address']);
             $zipcode = addslashes($_POST['user_zipcode']);
                 
-            if(!empty($name) && !empty($email) && !empty($password) && !empty($address) && !empty($zipcode)){
-                if(!$user_query->registerUser($name, $email, $password, $address, $zipcode, 0)){
+            if(!empty($name) && !empty($email) && !empty($password)
+            && !empty($address) && !empty($zipcode)){
+                if(!$user_query->registerUser($name, $email, $password,
+                $address, $zipcode, 0)){
                     echo '<label style="color: red">Email already exists!</label>';
                 }
             }else{

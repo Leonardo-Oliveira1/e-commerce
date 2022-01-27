@@ -6,7 +6,7 @@
         <nav>
             <div class="logozipcode">
                 <a href="../index.php" id="logo">LOGO</a>
-                <p id="zipcode">Delievery to <strong>{user}</strong> <br> Zipcode: <strong>{cep}</strong></p>
+                <p id="zipcode">Delievery to <strong><?php if(isset($_SESSION['user_name'])){ echo $_SESSION['user_name'];}?></strong> <br> Zipcode: <strong><?php if(isset($_SESSION['user_zipcode'])){ echo $_SESSION['user_zipcode'];}?></strong></p>
             </div>
             <input type="text" id="txtBusca" placeholder="Search products..."/>
 

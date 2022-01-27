@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +34,8 @@
                 }
             }
         }
+        $user_query->userSession();
+        print_r($_SESSION);
     ?>
 
         <input type="submit" value="Continue" name="send">

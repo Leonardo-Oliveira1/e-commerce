@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +12,10 @@
     <?php 
         require_once "..\model\user_queries.php";
         $user_query = new userQueries;
-        include("header.php");
 
+        include("header.php");
+    
+        print_r($_SESSION);
 
     ?>
         

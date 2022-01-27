@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,8 +65,11 @@
 
             include("..\controller\product_image_validation.php");
 
-            if(!empty($name) && !empty($image) && !empty($description) && !empty($details) && !empty($author) && !empty($seller) && !empty($price) && !empty($category)){
-                $product_query->registerProduct($name, $image, $description, $details, $author, $seller, $price, $category);
+            if(!empty($name) && !empty($image) && !empty($description) 
+            && !empty($details) && !empty($author) && !empty($seller) 
+            && !empty($price) && !empty($category)){
+                $product_query->registerProduct($name, $image, $description,
+                $details, $author, $seller, $price, $category);
             }
         }
     ?>
