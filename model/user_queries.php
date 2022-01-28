@@ -4,6 +4,7 @@
     class userQueries extends Connection{
         private $userID;
 
+
         public function registerUser($name, $email, $password, $address,
         $zipcode, $isSeller){
     
@@ -42,18 +43,22 @@
             if ($user_id_array != false){
                 $user_id = $user_id_array;
                 echo '<label style="color: green">You has been logged! </label>';
-                header("Location: cart.php");
+                $this->userID = $user_id_array['id']; 
+                $this->createUserSession();
+                header("Location: user_profile.php");
             }else{
                 echo '<label style="color: red">The email or password is wrong!</label>';
             }
             
-            $this->userID = $user_id_array['id']; 
         }
 
-        public function userSession(){
+        public function getUserID(){
+            return $this->userID;
+        }
 
+        public function createUserSession(){
             $select = $this->pdo->prepare("SELECT * FROM users WHERE id = :i");
-            $select->bindValue(":i", $this->userID);
+            $select->bindValue(":i", $this->getUserID());
             $select->execute();
 
             $result = $select->fetch(PDO::FETCH_ASSOC);
@@ -61,14 +66,24 @@
             $user_name = $result['name'];
             $user_zipcode = $result['zipcode'];
             $user_isSeller = $result['isSeller'];
-            
+            $user_id = $result['id'];
+                
             $_SESSION['user_name'] = $user_name;
             $_SESSION['user_zipcode'] = $user_zipcode;
             $_SESSION['isSeller'] = $user_isSeller;
+            $_SESSION['id'] = $user_id;
+            $_SESSION['Logged'] = true;
         }
 
-        public function getUserID(){
-            echo $this->userID;
+        public function beSeller(){
+            $user_id = $_SESSION['id'];
+            $cmd = $this->pdo->prepare("UPDATE `users` SET `isSeller`='1' WHERE `id` = $user_id"); 
+            $cmd->bindValue(":i", $this->userID);
+            $cmd->execute();
+
+            $_SESSION['isSeller'] = 1;
+            header("Refresh:0; url=user_profile.php");
         }
+
     }
 ?>
