@@ -14,8 +14,6 @@
         $user_query = new userQueries;
 
         include("header.php");
-    
-        print_r($_SESSION);
 
     ?>
         
