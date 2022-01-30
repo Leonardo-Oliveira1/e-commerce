@@ -24,6 +24,16 @@
                 return true;
         }
 
+        public function deleteProduct(){
+             if(isset($_GET['delete'])){
+                  $product_id_delete = $_GET['delete']; 
+                  $cmd = $this->pdo->prepare("DELETE FROM `products` WHERE `products`.`product_id` = $product_id_delete"); 
+                  $cmd->execute(); 
+                }else{ 
+                    return false; 
+                } 
+            }
+            
         public function showProducts(){
             $selectall = $this->pdo->query("SELECT `product_id` FROM products");
             $selectall->execute();
