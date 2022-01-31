@@ -11,8 +11,8 @@
 </head>
 <body>
     <?php 
-        require "model/product_queries.php";
-        $product_query = new productQueries;
+        require_once "model\product_classes\showAllProducts.php";
+        $products = new showAllProducts;
     ?>
 
     <header>
@@ -33,7 +33,7 @@
 
     <div class="allproducts">
         <?php 
-            $product_query->showProducts();
+            $products->show();
         ?>   
     </div>
 </body>

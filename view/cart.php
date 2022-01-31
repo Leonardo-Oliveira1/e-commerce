@@ -10,11 +10,7 @@
 </head>
 <body>
     <?php 
-        require_once "..\model\user_queries.php";
-        $user_query = new userQueries;
-
         include("header.php");
-
     ?>
         
         <h1>Cart!</h1>

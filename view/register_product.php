@@ -10,8 +10,8 @@
 </head>
 <body>
     <?php  
-        require_once "..\model\product_queries.php";
-        $product_query = new productQueries;
+        require_once "..\model\product_classes\productRegister.php";
+        $registerProduct = new productCRUD;
 
         include("header.php");
         if(!$_SESSION['Logged']) die(header("Location: login_user.php"));
@@ -67,7 +67,7 @@
                 if(!empty($name) && !empty($image) && !empty($description) 
                 && !empty($details) && !empty($author) && !empty($price) 
                 && !empty($category)){
-                    $product_query->registerProduct($name, $image, $description,
+                    $registerProduct->register($name, $image, $description,
                     $details, $author, $price, $category);
                 }
             }

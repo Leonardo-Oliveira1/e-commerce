@@ -11,10 +11,8 @@
 </head>
 <body>
     <?php 
-        require "..\model\product_queries.php";
-        require_once "..\model\user_queries.php";
-        $user_query = new userQueries;
-        $product_query = new productQueries;
+        require_once "..\model\product_classes\showEditableProducts.php";
+        $products = new showEditableProducts;
         include("header.php");
     ?>
 
@@ -44,7 +42,7 @@
         <br>
         
         <div class="allproducts">
-            <?php $product_query->showUserProducts(); ?>
+            <?php $products->show(); ?>
         </div>
 
     </div>

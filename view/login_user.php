@@ -10,8 +10,8 @@
 </head>
 <body>
     <?php 
-        require_once "..\model\user_queries.php";
-        $user_query = new userQueries;
+        require_once "..\model\user_classes\userLogin.php";
+        $login = new userLogin;
     ?>
     <div class="container">
         <div class="message">
@@ -31,7 +31,7 @@
                 $password = addslashes($_POST['user_password']);
                     
                 if(!empty($email) && !empty($password)){
-                    if(!$user_query->loginUser($email, $password)){
+                    if(!$login->loginUser($email, $password)){
 
                     }
                 }

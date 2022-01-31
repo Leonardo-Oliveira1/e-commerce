@@ -9,8 +9,8 @@
 </head>
 <body>
     <?php 
-        require_once "..\model\user_queries.php";
-        $user_query = new userQueries;
+        require_once "..\model\user_classes\userRegister.php";
+        $register = new userRegister;
     ?>
 
     <div class="container">
@@ -43,7 +43,7 @@
                     
                 if(!empty($name) && !empty($email) && !empty($password)
                 && !empty($address) && !empty($zipcode)){
-                    if(!$user_query->registerUser($name, $email, $password,
+                    if(!$register->register($name, $email, $password,
                     $address, $zipcode, 0)){
                         echo '<label style="color: red">Email already exists!</label>';
                     }
