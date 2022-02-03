@@ -11,6 +11,7 @@
 </head>
 <body>
     <?php 
+        include("../controller/user_logged_verification.php");
         require_once "..\model\product_classes\showEditableProducts.php";
         $products = new showEditableProducts;
         include("header.php");
@@ -18,12 +19,6 @@
 
     <div class="content">
         
-        <?php 
-            if(empty($_SESSION['user_name']) && empty($_SESSION['user_zipcode']) && empty($_SESSION['isSeller'])){
-                $_SESSION['Logged'] = false; 
-            }
-            if(!$_SESSION['Logged']) die(header("Location: login_user.php"));
-        ?>
 
         <h1>Welcome back, <?php echo $_SESSION['user_name'];?>!</h1>
         <?php include("../controller/isSeller_verification.php");?>

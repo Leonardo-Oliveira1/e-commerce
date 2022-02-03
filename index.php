@@ -12,21 +12,37 @@
 <body>
     <?php 
         require_once "model\product_classes\showAllProducts.php";
+        require_once "model\cart.php";
         $products = new showAllProducts;
+        $cart = new Cart;
     ?>
 
     <header>
             <nav>
                 <div class="logozipcode">
                     <a href="index.php" id="logo">LOGO</a>
-                    <p id="zipcode">Delievery to <strong><?php if(isset($_SESSION['user_name'])){ echo $_SESSION['user_name'];}?></strong> <br> Zipcode: <strong><?php if(isset($_SESSION['user_zipcode'])){ echo $_SESSION['user_zipcode'];}?></strong></p>
+                    <p id="zipcode"> 
+                        <?php 
+                            if(isset($_SESSION['user_name'])){
+                                echo "Delievery to "."<strong>".$_SESSION['user_name']."</strong>";
+                            }
+                        ?>
+
+                        <br> 
+
+                        <?php 
+                            if(isset($_SESSION['user_zipcode'])){
+                                echo "Zipcode: "."<strong>".$_SESSION['user_zipcode']."</strong>";
+                            }
+                        ?>
+                    </p>
                 </div>
                 <input type="text" id="txtBusca" placeholder="Search products..."/>
 
                 <ul>
                     <a href="view/register_product.php"><li>Add a new product</li></a>
                     <a href="<?php if(isset($_SESSION['Logged'])){ echo "view/user_profile.php";}else{ echo "view/login_user.php";}?>"><li>Your account</li></a>
-                    <a href="view/cart.php"><li>Cart (0)</li></a>
+                    <a href="view/cart.php"><li>Cart (<?php if(isset($_SESSION['cart_product_amount'])){echo $_SESSION['cart_product_amount'];}else{echo 0;}?>)</li></a>
                 </ul>
             </nav>
     </header>
@@ -36,5 +52,15 @@
             $products->show();
         ?>   
     </div>
+
+
+    <?php 
+    
+
+    if(isset($_GET['addItemToCart'])){
+        echo "Primeira compra adicionada: (id)".$_GET['addItemToCart'];
+    }
+    
+    ?>
 </body>
 </html>

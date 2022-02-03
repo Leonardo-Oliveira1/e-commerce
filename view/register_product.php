@@ -14,7 +14,7 @@
         $registerProduct = new productCRUD;
 
         include("header.php");
-        if(!$_SESSION['Logged']) die(header("Location: login_user.php"));
+        include("../controller/user_logged_verification.php");
         if(!$_SESSION['isSeller']) die('<center><h1>You must be a seller to launch products. Become a seller on your profile!</h1></center>');
     ?>
 

@@ -8,13 +8,13 @@
             $selectAllUserProducts->execute();
 
             while($count = $selectAllUserProducts->fetch(PDO::FETCH_ASSOC)){
-                $countposition = $count['product_id'];
+                $product_id_position = $count['product_id'];
                 $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
                 `product_author`, `product_rating`, `product_price`, `product_seller`
                 FROM `products` WHERE `seller_id` = :s_id and `product_id` = :p_id");
                 
                 $cmd->bindValue(":s_id", $seller_id);
-                $cmd->bindValue(":p_id", $countposition);
+                $cmd->bindValue(":p_id", $product_id_position);
                 $cmd->execute();
                 $result = $cmd->fetch(PDO::FETCH_ASSOC);
     
