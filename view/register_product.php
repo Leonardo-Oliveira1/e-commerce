@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php  
-        require_once "..\model\product_classes\productRegister.php";
+        require_once "..\model\product_classes\productCRUD.php";
         $registerProduct = new productCRUD;
 
         include("header.php");

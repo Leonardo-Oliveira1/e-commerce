@@ -36,7 +36,7 @@
                     <p id='seller'>Announced by {$product_seller}</p>
                 </div>
 
-                <form action='view/cart.php?add=carrinho&id=$product_id_position' method='post'>
+                <form action='view/cart.php?add=cart&id=$product_id_position' method='post'>
                     <button name='botao'>Add to Cart</button>
                 </form>
             </div>";

@@ -53,14 +53,5 @@
         ?>   
     </div>
 
-
-    <?php 
-    
-
-    if(isset($_GET['addItemToCart'])){
-        echo "Primeira compra adicionada: (id)".$_GET['addItemToCart'];
-    }
-    
-    ?>
 </body>
 </html>
