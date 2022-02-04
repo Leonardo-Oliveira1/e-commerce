@@ -3,8 +3,7 @@
     require_once "connection.php";
     class Cart extends Connection{
 
-        public function show($idProduto){
-            $product_id = $idProduto;
+        public function show($product_id){
             $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
             `product_author`, `product_rating`, `product_price`, `product_seller`
             FROM `products` WHERE `product_id` = $product_id");
@@ -24,14 +23,21 @@
             <div class='info'>
                 <span id='title'>{$product_name}</span><br>
                 <span id='author'>by {$product_author}</span>
-                <p id='rating'>{$product_rating} ratings</p>
-                <p id='price'> $ {$product_price}</p>
                 <p id='seller'>Announced by {$product_seller}</p>
+                <p id='price'> $ {$product_price}</p>
             </div>
 
+            
+            <label>Qnty.</label>
+            <input type='number' name='qnty' min='1' max='10' maxlength='2' value='{$_SESSION['items'][$product_id]}' id='qnty'>
             <a href='?remove=cart&id=$product_id'>Delete</a>
-            <p>Qty: {$_SESSION['items'][$product_id]}</p>
-            </div>";
+            </div>
+            
+            <hr>
+
+            ";
+
+            
 
         }
 
@@ -67,6 +73,16 @@
                 unset($_SESSION['items'][$idProduct]);
                 header("Refresh:0; url=../view/cart.php");
             }
+        }
+
+        public function total($product_id){
+            $cmd = $this->pdo->prepare("SELECT `product_price` 
+            FROM `products` WHERE `product_id` = $product_id");
+            $cmd->execute();
+            $result = $cmd->fetch(PDO::FETCH_ASSOC);
+            
+            $product_price = $result['product_price'];
+            echo $product_price;
         }
     }   
 

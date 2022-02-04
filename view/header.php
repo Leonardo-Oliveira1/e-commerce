@@ -24,7 +24,7 @@
         <ul>
             <a href="register_product.php"><li>Add a new product</li></a>
             <a href="<?php if(isset($_SESSION['Logged'])){ echo "user_profile.php";}else{ echo "login_user.php";}?>"><li>Your account</li></a>
-            <a href="cart.php"><li>Cart (<?php if(isset($_SESSION['cart_product_amount'])){echo $_SESSION['cart_product_amount'];}else{echo 0;}?>)</li></a>
+            <a href="cart.php"><li>Cart (<?php if(isset($_SESSION['items'])){echo count($_SESSION['items']);}else{echo 0;}?>)</li></a>
         </ul>
     </nav>
 </header>

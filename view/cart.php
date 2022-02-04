@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/product.css">
+    <link rel="stylesheet" href="CSS/cart.css">
     <title>Cart</title>
 </head>
 <body>
@@ -14,8 +14,35 @@
         require_once "..\model\cart.php";
         $cart = new Cart;
         
-        $cart->addItemToCart();        
-        $cart->removeCartItem();
     ?>
+
+
+<?php ?>
+
+    <div class="container">
+        <div class="allproducts">
+            <h1>Shopping cart</h1>
+            <hr>
+
+        <?php
+                $cart->addItemToCart();        
+                $cart->removeCartItem();
+            ?>
+        </div>
+
+        <div class="finish">
+            <h2><?php
+     if(count($_SESSION['items']) == 1){
+     echo "Subtotal: (".count($_SESSION['items']). " item): <strong>$434</strong>";
+    }elseif(count($_SESSION['items']) > 1){
+        echo "Subtotal: (".count($_SESSION['items']). " items): <strong>$434</strong>";
+    }
+     ?></h2>
+            <input type="submit" value="Proceed to checkout">
+        </div>
+
+    </div>
+
+
 </body>
 </html>
