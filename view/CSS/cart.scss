@@ -72,6 +72,11 @@ $secondary-font: 'Public Sans', sans-serif;
         text-decoration: underline;
     }
 
+    .amount{
+        display: flex;
+        justify-content: center;
+        margin-left: 160px;
+    }
     label{
         position: relative;
         top: 125px;

@@ -27,10 +27,11 @@
                 <p id='price'> $ {$product_price}</p>
             </div>
 
-            
-            <label>Qnty.</label>
-            <input type='number' name='qnty' min='1' max='10' maxlength='2' value='{$_SESSION['items'][$product_id]}' id='qnty'>
-            <a href='?remove=cart&id=$product_id'>Delete</a>
+            <div class='amount'>
+                <label>Qnty.</label>
+                <input type='number' name='qnty' min='1' max='10' maxlength='2' value='{$_SESSION['items'][$product_id]}' id='qnty'>
+                <a href='?remove=cart&id=$product_id'>Delete</a>
+            </div>
             </div>
             
             <hr>
@@ -51,14 +52,19 @@
                 $idProduct = $_GET['id'];
                 if(!isset($_SESSION['items'][$idProduct])){
                     $_SESSION['items'][$idProduct] = 1;
+                    header("Location: cart.php");
                 }else{
                     $_SESSION['items'][$idProduct] +=  1;
+                    header("Location: cart.php");
                 }
             }
     
             //Exibe o carrinho
-            if(count($_SESSION['items']) == 0){
-                echo "The cart is empty.";
+            if(count($_SESSION['items']) == 0 && !$_SESSION['Logged']){
+                header("Location: cart-logged-out.php");
+            }
+            if(count($_SESSION['items']) == 0 && $_SESSION['Logged']){
+                header("Location: cart-empty.php");
             }else{
                 foreach ($_SESSION['items'] as $idProduct => $amount){
                     $this->show($idProduct);
