@@ -59,7 +59,7 @@
                 }
             }
     
-            //Exibe o carrinho
+            //Show cart
             if(count($_SESSION['items']) == 0 && !$_SESSION['Logged']){
                 header("Location: cart-logged-out.php");
             }
