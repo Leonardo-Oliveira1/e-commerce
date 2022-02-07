@@ -29,6 +29,7 @@
             <hr>
 
         <?php
+                $cart->setSubTotal();
                 $cart->addItemToCart();        
                 $cart->removeCartItem();
             ?>
@@ -37,9 +38,9 @@
         <div class="finish">
             <h2><?php
      if(count($_SESSION['items']) == 1){
-     echo "Subtotal: (".count($_SESSION['items']). " item): <strong>$434</strong>";
+     echo "Subtotal: (".count($_SESSION['items']). " item): <strong>$".$cart->getSubTotal()."</strong>";
     }elseif(count($_SESSION['items']) > 1){
-        echo "Subtotal: (".count($_SESSION['items']). " items): <strong>$434</strong>";
+        echo "Subtotal: (".count($_SESSION['items']). " items): <strong>$".$cart->getSubTotal()."</strong>";
     }
      ?></h2>
             <input type="submit" value="Proceed to checkout">

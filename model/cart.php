@@ -3,6 +3,17 @@
     require_once "connection.php";
     class Cart extends Connection{
 
+        private $subTotal;
+
+        public function setSubTotal(){
+            $this->subTotal = 0;
+        }
+
+        public function getSubTotal(){
+            return number_format($this->subTotal, 2, ',', '.');
+        }
+
+
         public function show($product_id){
             $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
             `product_author`, `product_rating`, `product_price`, `product_seller`
@@ -16,6 +27,9 @@
             $product_rating = $result['product_rating'];
             $product_price = $result['product_price'];
             $product_seller = $result['product_seller'];
+
+
+            $product_price = number_format($product_price, 2, ',', '.');
 
             echo "<div class='product'>
             <img src='product_images/{$product_image_url}' alt='Product image'>
@@ -38,7 +52,6 @@
 
             ";
 
-            
 
         }
 
@@ -69,6 +82,9 @@
                 foreach ($_SESSION['items'] as $idProduct => $amount){
                     $this->show($idProduct);
                     $_SESSION['cart_product_amount'] = count($_SESSION['items']);
+                    
+                    //getting id
+                    $this->subTotal($idProduct);
                 }
             }
         }
@@ -81,14 +97,18 @@
             }
         }
 
-        public function total($product_id){
+        public function subTotal($product_id){
             $cmd = $this->pdo->prepare("SELECT `product_price` 
             FROM `products` WHERE `product_id` = $product_id");
             $cmd->execute();
             $result = $cmd->fetch(PDO::FETCH_ASSOC);
             
             $product_price = $result['product_price'];
-            echo $product_price;
+            $qnty = $_SESSION['items'][$product_id];
+
+            foreach ($result as $key) {
+                $this->subTotal += $product_price * $qnty;
+            }
         }
     }   
 

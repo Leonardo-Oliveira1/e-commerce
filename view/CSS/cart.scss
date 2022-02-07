@@ -193,6 +193,7 @@ $secondary-font: 'Public Sans', sans-serif;
         font-family: $secondary-font;
         font-size: 1.7rem;
         font-weight: 400;
+        white-space: nowrap;
     }
     
     input[type="submit"]{

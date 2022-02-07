@@ -24,7 +24,9 @@
                 $product_rating = $result['product_rating'];
                 $product_price = $result['product_price'];
                 $product_seller = $result['product_seller'];
-
+                
+                $product_price = number_format($product_price, 2, ',', '.');
+                
                 echo "<div class='product'>
                 <img src='product_images/{$product_image_url}' alt='Product image'>
         
