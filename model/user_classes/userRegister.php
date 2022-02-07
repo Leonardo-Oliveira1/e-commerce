@@ -25,6 +25,7 @@
                     $cmd->bindValue(":z", $zipcode);
                     $cmd->bindValue(":i", $isSeller);
                     $cmd->execute();
+
                     header("Location: ../index.php");
                     return true;
                 }

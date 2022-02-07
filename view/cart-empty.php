@@ -13,13 +13,19 @@
         include("header.php");  
     ?>
 
-    <div class="container">
-        <div class="allproducts">
-            <h1>Your cart is empty. Start to shopping here!</h1>
-            <hr>
-        </div>
-    </div>
+<style>
+body {
+  background-image: url("CSS/plant-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 15%;
 
+}
+</style>
+    <div class="container-empty">
+            <h1 style="margin-top: 40px;">Your cart is empty. Start to shopping in our store!</h1>
+            <h2><a href="/e-commerce/index.php">Check all products</a></h2>
+    </div>
 
 </body>
 </html>

@@ -30,9 +30,6 @@
             <label>Product description</label><br>
             <textarea id="product_description" required name="product_description"></textarea><br>
 
-            <label>Product details</label><br>
-            <textarea id="product_details" required name="product_details"></textarea><br>
-
             <label>Product author</label><br>
             <input type="text" id="product_author" required name="product_author" maxlength="16"><br><br>
 
@@ -57,7 +54,6 @@
             if(isset($_POST['send_product'])){
                 $name = addslashes($_POST['product_name']);
                 $description = addslashes($_POST['product_description']);
-                $details = addslashes($_POST['product_details']);
                 $author = addslashes($_POST['product_author']);
                 $price = addslashes($_POST['product_price']);
                 $category = addslashes($_POST['product_category']);
@@ -65,10 +61,10 @@
                 include("..\controller\product_image_validation.php");
 
                 if(!empty($name) && !empty($image) && !empty($description) 
-                && !empty($details) && !empty($author) && !empty($price) 
+                && !empty($author) && !empty($price) 
                 && !empty($category)){
-                    $registerProduct->register($name, $image, $description,
-                    $details, $author, $price, $category);
+                    $registerProduct->register($name, $image, $description, 
+                    $author, $price, $category);
                 }
             }
         ?>

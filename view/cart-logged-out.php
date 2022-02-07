@@ -13,14 +13,23 @@
         include("header.php");  
     ?>
 
-    <div class="container">
-        <div class="allproducts">
-            <h1>Shopping cart</h1>
-            <hr>
-            <img src="CSS/3Dimage.png" alt="">
-        </div>
-    </div>
+<style>
+body {
+  background-image: url("CSS/plant-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 15%;
 
+}
+</style>
+    <div class="container-empty">
+            <h1>Your cart is empty. Sign in or sign up and start to shopping!</h1>
+
+            <div class="actions">
+                <a href="login_user.php"><button style="background-color: #7D5BE1;">Sign in to your account</button></a>
+                <a href="register_user.php"><button>Sign up now</button></a>
+            </div>
+    </div>
 
 </body>
 </html>
