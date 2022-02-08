@@ -24,7 +24,7 @@ The following tools were used in the construction of the project:
 
 - [x] Registration and login system
 - [x] Individual profiles for each user
-- [x] Product creation, update and delete system
+- [x] Product create, update and delete system
 - [x] Cart
   
   <br>
