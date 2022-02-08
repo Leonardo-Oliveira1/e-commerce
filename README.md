@@ -4,7 +4,7 @@
 
 ### ⚠ About 
 
-<p>The objective of this project was to consolidate all the <strong>object-oriented programming</strong> concepts that I have already learned using <strong>PHP</strong> in an online store.</p>
+<p>The objective of this project was to consolidate all the <strong>object-oriented programming</strong> concepts that I have already learned using <strong>PHP</strong> in development of an online store.</p>
 
 <br>
 
@@ -15,8 +15,6 @@
 The following tools were used in the construction of the project:
 
  - [PHP](php.net)
- - [HTML](https://www.w3schools.com/html/)
-
  - [SASS](https://sass-lang.com/)
  - [MySQL](https://www.mysql.com/)
 
