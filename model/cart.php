@@ -44,6 +44,8 @@
             <div class='amount'>
                 <label>Qnty.</label>
                 <input type='number' name='qnty' min='1' max='10' maxlength='2' value='{$_SESSION['items'][$product_id]}' id='qnty'>
+                <a href='?decrease=$product_id'><button>-</button></a>
+                <a href='?increase=$product_id'><button>+</button></a>        
                 <a href='?remove=cart&id=$product_id'>Delete</a>
             </div>
             </div>
@@ -95,6 +97,37 @@
                 unset($_SESSION['items'][$idProduct]);
                 header("Refresh:0; url=../view/cart.php");
             }
+        }
+
+        public function increaseAndDecrease(){
+            $total_qnty = array_sum($_SESSION['items']);
+
+
+
+            if(isset($_GET['increase'])){
+                $qnty = $_SESSION['items'][$_GET['increase']];
+                $qnty++;
+
+                if($qnty > 10){
+                    $qnty = 10;
+                }
+                
+                $_SESSION['items'][$_GET['increase']] = $qnty;
+                header("Location: cart.php");
+            }
+
+            if(isset($_GET['decrease'])){
+                $qnty = $_SESSION['items'][$_GET['decrease']];
+                $qnty--;
+
+                if($qnty < 1){
+                    $qnty = 1;
+                }
+
+                $_SESSION['items'][$_GET['decrease']] = $qnty;
+                header("Location: cart.php");
+            }
+
         }
 
         public function subTotal($product_id){
