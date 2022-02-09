@@ -51,7 +51,7 @@
     </header>
 
     <div class="allproducts">
-        <?php 
+        <?php
             $products->show();
         ?>   
     </div>

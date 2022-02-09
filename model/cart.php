@@ -15,8 +15,13 @@
 
 
         public function show($product_id){
-            $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
-            `product_author`, `product_rating`, `product_price`, `product_seller`
+            $cmd = $this->pdo->prepare("SELECT 
+            `product_image`,
+            `product_name`,
+            `product_author`,
+            `product_rating`, 
+            `product_price`, 
+            `product_seller`
             FROM `products` WHERE `product_id` = $product_id");
             $cmd->execute();
             $result = $cmd->fetch(PDO::FETCH_ASSOC);
@@ -51,10 +56,8 @@
             </div>
             
             <hr>
-
+            
             ";
-
-
         }
 
         public function addItemToCart(){

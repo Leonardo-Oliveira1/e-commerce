@@ -18,11 +18,14 @@
                 $product_id_position = $count['product_id'];
                 $this->product_id_position = $product_id_position;
                 
-                $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
-                `product_author`, `product_rating`, `product_price`, `product_seller`
-                FROM `products` WHERE `seller_id` = :s_id and `product_id` = :p_id");
-                
-                $cmd->bindValue(":s_id", $seller_id);
+                $cmd = $this->pdo->prepare("SELECT 
+                `product_image`, 
+                `product_name`,
+                `product_author`, 
+                `product_rating`, 
+                `product_price`, 
+                `product_seller`
+                FROM `products` WHERE `seller_id` = '$seller_id' and `product_id` = :p_id");
                 $cmd->bindValue(":p_id", $this->product_id_position);
                 $cmd->execute();
                 $result = $cmd->fetch(PDO::FETCH_ASSOC);
@@ -73,12 +76,48 @@
                    } 
             }
 
-            public function updateProduct(){
-                if(isset($_GET['updateID'])){
-                    $product_id_delete = $_GET['updateID']; 
-                  }else{ 
-                      return false; 
-                  } 
+
+            public function getData(){
+                $product_id = $_SESSION['updateProductID'];
+
+                $cmd = $this->pdo->prepare("SELECT `product_name`, `product_description`, 
+                `product_author`, `product_price`
+                FROM `products` WHERE `product_id` = $product_id");
+                $cmd->execute();
+                $result = $cmd->fetch(PDO::FETCH_ASSOC);
+
+                $product_name = $result['product_name'];
+                $product_description = $result['product_description'];
+                $product_author = $result['product_author'];
+                $product_price = $result['product_price'];
+
+                echo "<label>Product name</label><br>
+                <input type='text' id='product_name' required name='product_name' value='$product_name' maxlength='60'><br><br>
+    
+                <label>Product description</label><br>
+                <textarea id='product_description' required name='product_description' >$product_description</textarea><br>
+    
+                <label>Product author</label><br>
+                <input type='text' value='$product_author' id='product_author' required name='product_author' maxlength='16'><br><br>
+    
+                <label>Product price (in dollars)</label><br>
+                <label style='color: red; font-size: 1.2rem'>don't use letters.</label>
+                <input type='text' value='$product_price' id='product_price' required name='product_price' maxlength='8'><br><br>";
+            }
+
+            public function updateProduct($name, $description, $author, $price){
+                    $product_id = $_SESSION['updateProductID'];
+                        
+                    $cmd = $this->pdo->prepare("UPDATE `products` SET 
+                    `product_name`='$name',
+                    `product_description`='$description',
+                    `product_author`='$author',
+                    `product_price`='$price' 
+                    WHERE `product_id` = $product_id");
+                    $cmd->execute();
+
+                    header("Location: user_profile.php");
+                
             }
         }       
 

@@ -11,9 +11,7 @@
 
         public function loginUser($email, $password){
             $cmd = $this->pdo->prepare("SELECT id FROM users WHERE 
-            email = :e and `password` = :p");
-            $cmd->bindValue(":e", $email);
-            $cmd->bindValue(":p", $password);
+            email = '$email' and `password` = '$password'");
             $cmd->execute();
             $user_id_array = $cmd->fetch(PDO::FETCH_ASSOC);
             

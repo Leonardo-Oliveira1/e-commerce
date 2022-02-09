@@ -24,6 +24,11 @@
         if(isset($_GET['deleteID'])){
             header("Location: user_profile.php");
         }
+
+        if(isset($_GET['product_id_to_update'])){
+            $_SESSION['updateProductID'] = $_GET['product_id_to_update'];
+            header("Location: update_product.php");
+        }
     ?>
 
     <div class="content">

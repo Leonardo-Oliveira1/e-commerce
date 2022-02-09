@@ -13,8 +13,8 @@
 </head>
 <body>
     <?php  
-        require_once "..\model\product_classes\productCRUD.php";
-        $registerProduct = new productCRUD;
+        require_once "..\model\product_classes\productRegister.php";
+        $registerProduct = new productRegister;
 
         include("header.php");
         include("../controller/user_logged_verification.php");

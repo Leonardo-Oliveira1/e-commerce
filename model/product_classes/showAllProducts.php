@@ -11,9 +11,7 @@
 
                 $cmd = $this->pdo->prepare("SELECT `product_image`, `product_name`,
                 `product_author`, `product_rating`, `product_price`, `product_seller`
-                FROM `products` WHERE `product_id` = :id");
-                
-                $cmd->bindValue(":id", $product_id_position);
+                FROM `products` WHERE `product_id` = $product_id_position");
                 $cmd->execute();
                 $result = $cmd->fetch(PDO::FETCH_ASSOC);
     
