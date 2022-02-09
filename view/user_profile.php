@@ -10,6 +10,8 @@
     <text y=%22.9em%22 font-size=%2290%22>👩‍💻</text></svg>">
     <link rel="stylesheet" href="CSS/product.css">
     <link rel="stylesheet" href="CSS/profile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet"/>
     <title><?php echo "{$_SESSION['user_name']} profile's"?></title>
 </head>
 <body>
@@ -18,6 +20,10 @@
         require_once "..\model\product_classes\showEditableProducts.php";
         $products = new showEditableProducts;
         include("header.php");
+
+        if(isset($_GET['deleteID'])){
+            header("Location: user_profile.php");
+        }
     ?>
 
     <div class="content">
@@ -40,9 +46,38 @@
         <br>
         
         <div class="allproducts">
-            <?php $products->show(); ?>
+            <?php $products->show(); $products->deleteProduct();?>
         </div>
 
     </div>
+    
+    <script>
+        function deleteAnimation(){
+            swal({
+                title: "Are you sure?",
+                text: "You are about to delete this product and it can never be recovered again.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+                html: false
+            }, function(){
+                setTimeout(function(){
+                    location = "?deleteID=<?php echo $_GET['product_id_to_delete']; ?>";
+                    }, 1500);
+                swal("Deleted!",
+                "This product has been successfully deleted!",
+                "success");
+
+            });
+        }
+    </script>
+
+<?php
+    if (isset($_GET['product_id_to_delete'])){
+        echo "<script>deleteAnimation();</script>";
+    }
+?>
 </body>
 </html>

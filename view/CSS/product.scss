@@ -87,4 +87,57 @@
         background-color: #432D9B;
         font-size: 1.5rem;
     }
+
+    .actions{ 
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+
+        #seeproduct{
+            width: 132px;
+            height: 29px;
+        }
+
+        #delete, #change{
+            width: 29px;
+            height: 29px;  
+            position: relative;
+            top: -44px;
+            left: 25px;
+
+            & img{
+                margin-top: 1px;
+                margin-right: 2px;
+                width: 19px;
+                height: 19px;
+            }
+        }
+
+        #delete{
+            background-color: #FF5959;
+            &:hover{
+                background-color: #CE4848;
+            }
+
+            &:active{
+                background-color: #AF3D3D;
+                font-size: 1.5rem;
+            }
+        }
+
+        #change{
+            background-color: #19A6FF;
+
+            &:hover{
+                background-color: #2D80B5;
+            }
+
+            &:active{
+                background-color: #3496D3;
+                font-size: 1.5rem;
+            }
+        }
+      
+    }
 }

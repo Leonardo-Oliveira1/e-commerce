@@ -26,7 +26,7 @@
                     $cmd->bindValue(":i", $isSeller);
                     $cmd->execute();
 
-                    header("Location: ../index.php");
+                    header("Location: user_profile.php");
                     return true;
                 }
         }

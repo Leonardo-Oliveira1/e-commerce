@@ -8,9 +8,9 @@
     <link rel="icon" href="data:image/svg+xml,<svg 
     xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
     <text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <link rel="stylesheet" href="CSS/cart.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="CSS/cart.css">
     <title>Cart</title>
 </head>
 <body>
